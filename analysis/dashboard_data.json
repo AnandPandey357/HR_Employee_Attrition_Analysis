@@ -1,0 +1,89 @@
+{
+  "kpi_metrics": {
+    "total_employees": 20,
+    "attrition_count": 7,
+    "attrition_rate": 35.0,
+    "average_salary": -0.0,
+    "avg_age": 0.0,
+    "avg_job_satisfaction": 0.0,
+    "avg_work_life_balance": -0.0
+  },
+  "attrition_by_department": {
+    "Sales": {
+      "total": 8,
+      "attrition": 4,
+      "attrition_rate": 50.0
+    },
+    "Research & Development": {
+      "total": 8,
+      "attrition": 1,
+      "attrition_rate": 12.5
+    },
+    "Human Resources": {
+      "total": 4,
+      "attrition": 2,
+      "attrition_rate": 50.0
+    }
+  },
+  "attrition_by_salary_range": {
+    "<4000": {
+      "total": 20,
+      "attrition": 7,
+      "attrition_rate": 35.0
+    }
+  },
+  "overtime_impact": {
+    "Yes": {
+      "total": 9,
+      "attrition": 6,
+      "attrition_rate": 66.67
+    },
+    "No": {
+      "total": 11,
+      "attrition": 1,
+      "attrition_rate": 9.09
+    }
+  },
+  "job_role_distribution": {
+    "Sales Executive": {
+      "count": 4,
+      "avg_salary": -0.68,
+      "attrition_rate": 75.0
+    },
+    "Research Scientist": {
+      "count": 3,
+      "avg_salary": 0.17,
+      "attrition_rate": 0.0
+    },
+    "Sales Representative": {
+      "count": 3,
+      "avg_salary": -0.94,
+      "attrition_rate": 33.33
+    },
+    "Laboratory Technician": {
+      "count": 3,
+      "avg_salary": -0.43,
+      "attrition_rate": 33.33
+    },
+    "HR Manager": {
+      "count": 2,
+      "avg_salary": 0.91,
+      "attrition_rate": 0.0
+    },
+    "Research Director": {
+      "count": 2,
+      "avg_salary": 2.27,
+      "attrition_rate": 0.0
+    },
+    "HR Specialist": {
+      "count": 2,
+      "avg_salary": -0.69,
+      "attrition_rate": 100.0
+    },
+    "Sales Manager": {
+      "count": 1,
+      "avg_salary": 1.37,
+      "attrition_rate": 0.0
+    }
+  }
+}

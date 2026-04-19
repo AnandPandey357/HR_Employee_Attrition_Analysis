@@ -1,0 +1,469 @@
+{
+  "info": {
+    "name": "HR Employee Attrition API Collection",
+    "description": "Postman collection for testing HR Employee Attrition Analysis API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "hr-attrition-api-collection",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    }
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "API Home",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        },
+        "description": "Get API information and available endpoints"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has message field\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('message');",
+              "});",
+              "",
+              "pm.test(\"Response has endpoints field\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('endpoints');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get All Employees",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/employees",
+          "host": ["{{base_url}}"],
+          "path": ["employees"]
+        },
+        "description": "Get all employee records"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has data array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('data');",
+              "    pm.expect(jsonData.data).to.be.an('array');",
+              "});",
+              "",
+              "pm.test(\"Response has total count\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('total');",
+              "    pm.expect(jsonData.total).to.be.a('number');",
+              "});",
+              "",
+              "pm.test(\"Employee data has required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    if (jsonData.data.length > 0) {",
+              "        pm.expect(jsonData.data[0]).to.have.property('EmployeeID');",
+              "        pm.expect(jsonData.data[0]).to.have.property('Age');",
+              "        pm.expect(jsonData.data[0]).to.have.property('Department');",
+              "        pm.expect(jsonData.data[0]).to.have.property('Attrition');",
+              "    }",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Employee by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/employees/EMP001",
+          "host": ["{{base_url}}"],
+          "path": ["employees", "EMP001"]
+        },
+        "description": "Get a specific employee by ID"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has EmployeeID\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('EmployeeID');",
+              "    pm.expect(jsonData.EmployeeID).to.eql('EMP001');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Employee by Invalid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/employees/INVALID999",
+          "host": ["{{base_url}}"],
+          "path": ["employees", "INVALID999"]
+        },
+        "description": "Test edge case: Get employee with invalid ID"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test(\"Response has error message\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('error');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Filter Employees by Department",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/employees?department=Sales",
+          "host": ["{{base_url}}"],
+          "path": ["employees"],
+          "query": [
+            {
+              "key": "department",
+              "value": "Sales"
+            }
+          ]
+        },
+        "description": "Get employees filtered by department"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"All employees are from Sales department\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.data.forEach(function(emp) {",
+              "        pm.expect(emp.Department).to.eql('Sales');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Filter Employees by Attrition Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/employees?attrition=Yes",
+          "host": ["{{base_url}}"],
+          "path": ["employees"],
+          "query": [
+            {
+              "key": "attrition",
+              "value": "Yes"
+            }
+          ]
+        },
+        "description": "Get employees filtered by attrition status"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"All employees have Attrition=Yes\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.data.forEach(function(emp) {",
+              "        pm.expect(emp.Attrition).to.eql('Yes');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Attrition Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/attrition-stats",
+          "host": ["{{base_url}}"],
+          "path": ["attrition-stats"]
+        },
+        "description": "Get comprehensive attrition statistics"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has overall stats\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('overall');",
+              "    pm.expect(jsonData.overall).to.have.property('attrition_rate');",
+              "});",
+              "",
+              "pm.test(\"Response has department stats\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('by_department');",
+              "});",
+              "",
+              "pm.test(\"Response has overtime impact\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('overtime_impact');",
+              "});",
+              "",
+              "pm.test(\"Attrition rate is between 0 and 100\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.overall.attrition_rate).to.be.at.least(0);",
+              "    pm.expect(jsonData.overall.attrition_rate).to.be.at.most(100);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get KPI Metrics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/kpi-metrics",
+          "host": ["{{base_url}}"],
+          "path": ["kpi-metrics"]
+        },
+        "description": "Get key performance indicators"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has total_employees\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('total_employees');",
+              "    pm.expect(jsonData.total_employees).to.be.a('number');",
+              "});",
+              "",
+              "pm.test(\"Response has attrition_rate\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('attrition_rate');",
+              "});",
+              "",
+              "pm.test(\"Response has average_salary\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('average_salary');",
+              "});",
+              "",
+              "pm.test(\"All KPI values are valid\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.total_employees).to.be.above(0);",
+              "    pm.expect(jsonData.average_salary).to.be.above(0);",
+              "    pm.expect(jsonData.average_age).to.be.above(0);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Department Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/department-stats",
+          "host": ["{{base_url}}"],
+          "path": ["department-stats"]
+        },
+        "description": "Get statistics by department"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response contains department data\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(Object.keys(jsonData).length).to.be.above(0);",
+              "});",
+              "",
+              "pm.test(\"Each department has required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    Object.keys(jsonData).forEach(function(dept) {",
+              "        pm.expect(jsonData[dept]).to.have.property('total_employees');",
+              "        pm.expect(jsonData[dept]).to.have.property('average_salary');",
+              "        pm.expect(jsonData[dept]).to.have.property('attrition_rate');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Salary Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/salary-stats",
+          "host": ["{{base_url}}"],
+          "path": ["salary-stats"]
+        },
+        "description": "Get salary statistics and distribution"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has overall stats\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('overall_stats');",
+              "    pm.expect(jsonData.overall_stats).to.have.property('mean');",
+              "    pm.expect(jsonData.overall_stats).to.have.property('median');",
+              "});",
+              "",
+              "pm.test(\"Response has salary ranges\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('by_range');",
+              "});",
+              "",
+              "pm.test(\"Response has attrition comparison\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('by_attrition');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invalid Endpoint Test",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/invalid-endpoint",
+          "host": ["{{base_url}}"],
+          "path": ["invalid-endpoint"]
+        },
+        "description": "Test edge case: Invalid endpoint"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test(\"Response has error message\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('error');",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

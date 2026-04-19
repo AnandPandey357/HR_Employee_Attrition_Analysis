@@ -1,0 +1,25 @@
+{
+  "original_rows": 20,
+  "processed_rows": 20,
+  "columns_before": 10,
+  "columns_after": 18,
+  "duplicates_removed": 0,
+  "categorical_encoded": [
+    "Gender",
+    "Department",
+    "JobRole",
+    "Overtime",
+    "Attrition"
+  ],
+  "numerical_normalized": [
+    "Age",
+    "MonthlyIncome",
+    "JobSatisfaction",
+    "WorkLifeBalance"
+  ],
+  "derived_features": [
+    "IncomeCategory",
+    "AgeGroup",
+    "OverallSatisfaction"
+  ]
+}

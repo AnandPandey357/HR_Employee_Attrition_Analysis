@@ -1,0 +1,77 @@
+{
+  "analysis_date": "2026-04-19 20:06:04",
+  "total_employees_analyzed": 20,
+  "key_insights": [
+    {
+      "factor": "Overtime",
+      "metric": "Attrition Rate",
+      "with_overtime": 66.67,
+      "without_overtime": 9.09,
+      "impact_percentage": 57.58,
+      "business_insight": "Employees working overtime have an attrition rate of 66.7%, compared to 9.1% for those without overtime. This represents a 57.6% higher attrition rate for overtime workers, indicating that excessive workload is a significant driver of employee turnover. Recommendation: Monitor overtime hours and implement workload balancing strategies."
+    },
+    {
+      "factor": "Job Satisfaction",
+      "metric": "Attrition Rate by Satisfaction Level",
+      "attrition_by_level": {
+        "-1.1941005027976794": 100.0,
+        "-0.1557522394953494": 14.29,
+        "0.8825960238069807": 0.0,
+        "1.9209442871093108": 0.0
+      },
+      "business_insight": "Job satisfaction shows a clear inverse relationship with attrition. Employees with satisfaction level 1 have 0% attrition rate, while those with level 5 have only 0%. This indicates that improving job satisfaction through recognition, career growth opportunities, and meaningful work assignments can significantly reduce attrition. Recommendation: Implement regular satisfaction surveys and address low-scoring areas proactively."
+    },
+    {
+      "factor": "Work-Life Balance",
+      "metric": "Attrition Rate by WLB Level",
+      "attrition_by_level": {
+        "-1.568929081105472": 66.67,
+        "-0.5883484054145521": 71.43,
+        "0.392232270276368": 0.0,
+        "1.372812945967288": 0.0
+      },
+      "business_insight": "Work-life balance is a critical factor in employee retention. Employees with poor work-life balance (level 1) show 0% attrition, while those with excellent balance (level 4) show only 0%. This suggests that flexible working arrangements, remote work options, and respecting personal time can significantly improve retention. Recommendation: Promote flexible work policies and ensure reasonable work hours."
+    },
+    {
+      "factor": "Salary",
+      "metric": "Attrition Rate by Salary Quartile",
+      "attrition_by_quartile": {
+        "Q1 (Low)": 66.67,
+        "Q2": 75.0,
+        "Q3": 0.0,
+        "Q4 (High)": 0.0
+      },
+      "avg_salary_attrition": -0.73,
+      "avg_salary_no_attrition": 0.39,
+      "salary_gap": 1.12,
+      "business_insight": "Salary has a significant impact on attrition. Employees in the lowest salary quartile (Q1) have 66.67% attrition rate, while those in the highest quartile (Q4) have only 0.0%. Additionally, employees who left had an average salary of $-1, compared to $0 for those who stayed - a difference of $1. Recommendation: Review compensation packages and ensure competitive pay, especially for lower-paid roles."
+    },
+    {
+      "factor": "Department",
+      "metric": "Attrition Rate by Department",
+      "attrition_by_department": {
+        "Sales": 50.0,
+        "Research & Development": 12.5,
+        "Human Resources": 50.0
+      },
+      "highest_attrition_dept": "Sales",
+      "lowest_attrition_dept": "Research & Development",
+      "business_insight": "Attrition varies significantly by department. The department with highest attrition (Sales) has 50.0% attrition rate, while Research & Development has only 12.5%. This suggests department-specific issues such as management style, workload, or culture. Recommendation: Conduct department-specific retention strategies and investigate root causes in high-attrition departments."
+    }
+  ],
+  "recommendations": [
+    "Implement workload monitoring and balancing to reduce overtime",
+    "Conduct regular job satisfaction surveys and act on feedback",
+    "Promote flexible work arrangements and work-life balance initiatives",
+    "Review and adjust compensation packages, especially for lower-paid roles",
+    "Develop department-specific retention strategies",
+    "Focus on early intervention for employees showing signs of dissatisfaction"
+  ],
+  "risk_factors": [
+    "Employees working overtime",
+    "Low job satisfaction scores (1-2)",
+    "Poor work-life balance ratings (1-2)",
+    "Below-average salary",
+    "Specific high-attrition departments"
+  ]
+}

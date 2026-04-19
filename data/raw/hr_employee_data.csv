@@ -1,0 +1,21 @@
+EmployeeID,Age,Gender,Department,JobRole,MonthlyIncome,JobSatisfaction,WorkLifeBalance,Overtime,Attrition
+EMP001,32,Male,Sales,Sales Executive,4500,3,2,Yes,Yes
+EMP002,41,Female,Research & Development,Research Scientist,6500,4,3,No,No
+EMP003,28,Male,Sales,Sales Representative,3500,2,1,Yes,Yes
+EMP004,45,Female,Research & Development,Laboratory Technician,5000,3,2,No,No
+EMP005,36,Male,Human Resources,HR Manager,8500,4,4,No,No
+EMP006,29,Female,Sales,Sales Executive,4200,2,2,Yes,Yes
+EMP007,52,Male,Research & Development,Research Director,12000,5,4,No,No
+EMP008,31,Female,Sales,Sales Representative,3800,3,1,Yes,No
+EMP009,38,Male,Research & Development,Research Scientist,6200,3,3,No,No
+EMP010,27,Female,Human Resources,HR Specialist,4500,2,2,Yes,Yes
+EMP011,44,Male,Sales,Sales Manager,9500,4,4,No,No
+EMP012,33,Female,Research & Development,Laboratory Technician,4800,2,2,No,Yes
+EMP013,39,Male,Sales,Sales Executive,4700,3,3,Yes,No
+EMP014,46,Female,Research & Development,Research Scientist,6800,4,3,No,No
+EMP015,30,Male,Human Resources,HR Specialist,4200,2,1,Yes,Yes
+EMP016,35,Female,Sales,Sales Representative,3900,3,2,Yes,No
+EMP017,48,Male,Research & Development,Research Director,11500,5,4,No,No
+EMP018,26,Female,Sales,Sales Executive,4100,2,2,Yes,Yes
+EMP019,42,Male,Research & Development,Laboratory Technician,5200,3,3,No,No
+EMP020,34,Female,Human Resources,HR Manager,8200,4,4,No,No

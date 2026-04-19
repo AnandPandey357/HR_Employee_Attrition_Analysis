@@ -1,0 +1,29 @@
+{
+  "Gender": {
+    "Female": 0,
+    "Male": 1
+  },
+  "Department": {
+    "Human Resources": 0,
+    "Research & Development": 1,
+    "Sales": 2
+  },
+  "JobRole": {
+    "HR Manager": 0,
+    "HR Specialist": 1,
+    "Laboratory Technician": 2,
+    "Research Director": 3,
+    "Research Scientist": 4,
+    "Sales Executive": 5,
+    "Sales Manager": 6,
+    "Sales Representative": 7
+  },
+  "Overtime": {
+    "No": 0,
+    "Yes": 1
+  },
+  "Attrition": {
+    "No": 0,
+    "Yes": 1
+  }
+}
